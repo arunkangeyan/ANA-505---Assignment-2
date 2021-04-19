@@ -70,12 +70,14 @@ call.center.input.data <- read.table("data_anonymous_bank_february.txt",
 # check data frame object and variable values
 print(summary(call.center.input.data))
 
+## the summary contains Phantom values and - VRU times. so we delete it in line 77 & 77.
 # delete PHANTOM calls
 call.center.data <- subset(call.center.input.data, subset = (outcome != "PHANTOM"))
 
 # negative VRU times make no sense... drop these rows from data frame
 call.center.data <- subset(call.center.data, subset = (vru_time >= 0))
 
+## calculate total wait time, time spend in automatic service + wait time
 # calculate wait time as sum of vru_time and q_time
 call.center.data$wait_time <- 
   call.center.data$vru_time + call.center.data$q_time
@@ -91,6 +93,7 @@ call.center.data$day_of_week <- factor(call.center.data$day_of_week,
   levels = c(1:7), labels = c("Sunday","Monday","Tuesday",
   "Wednesday","Thursday","Friday","Saturday"))
 
+##displays No. of calls by days of the week
 # examine frequency of calls by day of week
 print(table(call.center.data$day_of_week))
 
