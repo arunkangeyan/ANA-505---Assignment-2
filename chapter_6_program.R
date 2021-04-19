@@ -1,4 +1,9 @@
 # Workforce Scheduling for Anonymous Bank Call Center (R)
+##lubridate makes it easier to work with dates and times
+##The Grid Library contains saved definitions of custom grid configurations
+##ggplot2 is a system for declaratively creating graphics
+## library(queueing)provides versatile tools for analysis of birth and death based Markovian Queueing Models
+##ipsolve functions that solve general linear/integer problems,
 
 library(lubridate)  # date functions
 library(grid)  # graphics utilities needed for split-plotting
@@ -54,12 +59,14 @@ put.title.on.plots <- TRUE  # put title on wait-time ribbon plots
 # server  name of agent, NO_SERVER if no service provided
 
 # focus upon February 1999
+##Specifying a colClasses argument to read.table save time on importing data, while also saving steps to specify classes for each variable later.
 call.center.input.data <- read.table("data_anonymous_bank_february.txt", 
   header = TRUE, colClasses = c("character","integer","numeric",
   "integer","character","character","character","character","integer",
   "character","character","integer","factor","character","character",
   "integer","character"))
-  
+
+##Function to print the summary output of an object of class  
 # check data frame object and variable values
 print(summary(call.center.input.data))
 
